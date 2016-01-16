@@ -8,6 +8,8 @@
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>
 
   <script src="app.js"></script>
+  <script src="directives/directives.js"></script>
+
 
   <script>
 
@@ -21,14 +23,21 @@
   .tg .tg-0a3w{background-color:#68cbd0}
   .tg .tg-93t1{background-color:#68cbd0;vertical-align:top}
 </style>
-<body ng-controller="SoundCloud">
+<body ng-controller="SoundCloud" >
 
 <h1>Hello {{ sometext }}</h1>
 
 <table class="tg">
   <tr>
-    <th  style="text-align:left;vertical-align:top;padding:0.70%" class="tg-0a3w">
-      <input type="text" ng-model="sometext">
+
+    <th class="left"   style="text-align:left;vertical-align:top;padding:0.70%" class="tg-0a3w">
+      <!--<input type="text" ng-model="sometext">-->
+      <div ng-controller="searchController">
+      <form novalidate>
+        <input ng-model="seacrh">
+        <input type="submit" ng-click="submitForm(seacrh); showResults(seacrh)" value="Go">
+      </form>
+    </div>
       <div ng-repeat="num in numArr">
         {{num}}
       </div>
@@ -44,6 +53,7 @@
       <div id="widget"></div>
     </th>
     <th class="tg-93t1"></th>
+
   </tr>
 </table>
 
