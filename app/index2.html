@@ -3,10 +3,7 @@
 <head lang="en">
   <meta charset="UTF-8">
   <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
-  <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
-  <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
-  <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
-
+  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
   <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>-->
   <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>-->
@@ -14,7 +11,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
   <script src="app.js"></script>
   <script src="directives/directives.js"></script>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 
 
   <script>
@@ -42,35 +38,27 @@
           <input type="submit" ng-click="submitForm(search); showResults(search); " value="Go">
         </form>
       </div>
+      <div ng-repeat="num in numArr">
+        {{num}}
+      </div>
       <!--<div ng-repeat="song in songs">-->
       <div ng-repeat="song in songs  | filter6:startIndex:size">
-        <div ng-if="tile">
-          <li><a href="" ng-click="showImg($index)">{{song.title}} </a></li>
-        </div>
-        <div ng-if="!tile">
-          <li><a href="" ng-click="showImg($index)">    <img ng-src="{{song.artwork_url}}"/>
-          </a></li>
-
-        </div>
-        <!--<li><a href="" ng-click="alert(playing)">{{song.title}} </a></li>-->
+        <li><a href="" ng-click="showImg($index)">{{song.title}} </a></li>
 
 
       </div>
-      <h5>Page Num: {{pageNum}}</h5>
       <br> <br>
       <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="nextResults()">
-      <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="tile = false">
-      <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="tile = true">
       <!--<img src="next-arrow-md.png" style="width:45px;height:30px;" >-->
     </th>
     <th class="tg-93t1">
-      <img ng-src="{{img}}" ng-click="showWidget()"  >
+      <img ng-src="{{img}}" ng-click="showWidget()">
       <div ng-bind-html="whtml"></div>
       <div id="widget"></div>
     </th>
     <th class="tg-93t1">
       Recent Searchs:
-      <div ng-repeat="search in $storage.recents track by $index"><a href="" ng-click="submitForm(search); showResults(search); ">{{search}}</a></div>
+      <!--<div ng-repeat=""></div>-->
     </th>
 
   </tr>
