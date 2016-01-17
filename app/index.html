@@ -2,33 +2,15 @@
 <html ng-app="myApp">
 <head lang="en">
   <meta charset="UTF-8">
-  <script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
-  <!--<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>-->
-  <script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
-  <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 
 
-  <!--<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.10/angular-sanitize.js"></script>-->
-  <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>-->
-  <!--<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>-->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
-  <script src="app.js"></script>
-  <script src="directives/directives.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+  <link rel="stylesheet" href="app.css">
 
-
-  <script>
-  </script>
-  <title></title>
+  <title>SoundCloud Search</title>
 </head>
-<style type="text/css">
-  .tg  {border-collapse:collapse;border-spacing:0;}
-  .tg td{font-family:Arial, sans-serif;font-size:14px;padding:200px 150px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-  .tg th{font-family:Arial, sans-serif;font-size:14px;font-weight:normal;padding:200px 150px;border-style:solid;border-width:1px;overflow:hidden;word-break:normal;}
-  .tg .tg-0a3w{background-color:#68cbd0}
-  .tg .tg-93t1{background-color:#68cbd0;vertical-align:top}
-</style>
-<body ng-controller="SoundCloud" >
+
+<body ng-controller="MainCtrl" >
 
 <h1>Hello {{ sometext }}</h1>
 
@@ -36,10 +18,10 @@
   <tr>
 
     <th class="left"   style="text-align:left;vertical-align:top;padding:0.70%" class="tg-0a3w">
-      <div ng-controller="searchController">
+      <div >
         <form novalidate>
           <input ng-model="search">
-          <input type="submit" ng-click="submitForm(search); showResults(search); " value="Go">
+          <input type="submit" ng-click="showResults(search); " value="Go">
         </form>
       </div>
       <!--<div ng-repeat="song in songs">-->
@@ -76,5 +58,14 @@
   </tr>
 </table>
 
+<script src="https://connect.soundcloud.com/sdk/sdk-3.0.0.js"></script>
+<script data-require="angular.js@1.1.5" data-semver="1.1.5" src="http://code.angularjs.org/1.1.5/angular.min.js"></script>
+<script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
+<script src="app.js"></script>
+<script src="directives/directives.js"></script>
+<script src="controllers/MainCtrl.js"></script>
+<script src="controllers/searchContrller.js"></script>
+<script src="filters/paging.js"></script>
 </body>
 </html>
