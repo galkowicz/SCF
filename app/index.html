@@ -12,7 +12,6 @@
 
 
   <script>
-
   </script>
   <title></title>
 </head>
@@ -27,25 +26,27 @@
 
 <h1>Hello {{ sometext }}</h1>
 
-<table class="tg">
+<table class="tg"  ng-controller="saveHistory">
   <tr>
 
     <th class="left"   style="text-align:left;vertical-align:top;padding:0.70%" class="tg-0a3w">
-      <!--<input type="text" ng-model="sometext">-->
       <div ng-controller="searchController">
-      <form novalidate>
-        <input ng-model="seacrh">
-        <input type="submit" ng-click="submitForm(seacrh); showResults(seacrh)" value="Go">
-      </form>
-    </div>
+        <form novalidate>
+          <input ng-model="search">
+          <input type="submit" ng-click="submitForm(search); showResults(search); addToHistory(search);" value="Go">
+        </form>
+      </div>
       <div ng-repeat="num in numArr">
         {{num}}
       </div>
       <div ng-repeat="song in songs track by $index">
-        <a href="" ng-click="showImg($index)">{{song.title}} </a>
+        <li><a href="" ng-click="showImg($index)">{{song.title}} </a></li>
+
 
       </div>
-
+      <br> <br>
+      <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="nextResults()">
+      <!--<img src="next-arrow-md.png" style="width:45px;height:30px;" >-->
     </th>
     <th class="tg-93t1">
       <img ng-src="{{img}}" ng-click="showWidget()">
