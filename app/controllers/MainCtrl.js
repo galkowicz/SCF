@@ -2,11 +2,6 @@ app.controller('MainCtrl', ['$http', '$scope','$localStorage', function ($http, 
     SC.initialize({
         client_id: 'd652006c469530a4a7d6184b18e16c81'
     });
-    //$scope.$storage = $localStorage.$default({
-    //    x: 42
-    //});
-    //$localStorage.sss = 'sa';
-    //console.log($localStorage);
     $scope.$storage = $localStorage.$default({
         recents: []
     });
@@ -16,7 +11,6 @@ app.controller('MainCtrl', ['$http', '$scope','$localStorage', function ($http, 
         $scope.startIndex = 0;
         $scope.pageNum=0;
 
-        //currentSongIndex=0;
 
         if ($scope.$storage.recents.length > 5) {
             $scope.$storage.recents.splice(5,1);
@@ -26,8 +20,7 @@ app.controller('MainCtrl', ['$http', '$scope','$localStorage', function ($http, 
         var searchString = 'http://api.soundcloud.com/tracks.json?client_id=d652006c469530a4a7d6184b18e16c81&q='+search+'&limit=50';
         $http({
             method: 'GET',
-            url: searchString,
-            params: {}//, linked_partitioning: 1 }
+            url: searchString
 
         }).then(function successCallback(response) {
             var songs = [];
@@ -49,20 +42,17 @@ app.controller('MainCtrl', ['$http', '$scope','$localStorage', function ($http, 
     $scope.showImg = function (index) {
         $scope.img = $scope.songs[index].artwork_url;
         currentSongIndex = index;
-        //angular.element(document.getElementById('widget')).removeData();
-        //$scope.playing = false;
-        //console.log(index);
     }
 
     $scope.showWidget = function () {
-        //if (!$scope.playing) {
+
         var track_url = $scope.songs[currentSongIndex].permalink_url;
-        //$scope.playing = true;
+
         SC.oEmbed(track_url, {auto_play: true,maxheight: 100, maxwidth: 300}).then(function (oEmbed) {
             angular.element(document.getElementById('widget')).html(oEmbed.html);
 
         });
-        //}
+
     }
 
     $scope.size = 6;
@@ -77,6 +67,16 @@ app.controller('MainCtrl', ['$http', '$scope','$localStorage', function ($http, 
         }
         $scope.pageNum+= 1;
 
+    }
+    $scope.fade =  function (btnElement) {
+        if (btnElement.value === "Fade Out") {
+            document.getElementById("myImg").className = "fade-out";
+            btnElement.value = "Fade In";
+        }
+        else {
+            document.getElementById("myImg").className = "fade-in";
+            btnElement.value = "Fade Out";
+        }
     }
 
 }]);

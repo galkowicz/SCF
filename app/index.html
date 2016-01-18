@@ -12,41 +12,39 @@
 
 <body ng-controller="MainCtrl" >
 
-<h1>Hello {{ sometext }}</h1>
+<br>
 
 <table class="tg"  >
   <tr>
 
-    <th class="left"   style="text-align:left;vertical-align:top;padding:0.70%" class="tg-0a3w">
+    <th class="left" >
       <div >
         <form novalidate>
           <input ng-model="search">
-          <input type="submit" ng-click="showResults(search); " value="Go">
+          <input type="submit" ng-click="showResults(search); tile=false " value="Go" >
         </form>
       </div>
       <!--<div ng-repeat="song in songs">-->
       <div ng-repeat="song in songs  | filter6:startIndex:size">
-        <div ng-if="tile">
+        <div ng-if="!tile">
           <li><a href="" ng-click="showImg($index)">{{song.title}} </a></li>
         </div>
-        <div ng-if="!tile">
-          <li><a href="" ng-click="showImg($index)">    <img ng-src="{{song.artwork_url}}"/>
-          </a></li>
+        <div ng-if="tile">
+          <a href="" ng-click="showImg($index)"> <img ng-src="{{song.artwork_url}}" /> </a>
 
         </div>
-        <!--<li><a href="" ng-click="alert(playing)">{{song.title}} </a></li>-->
 
 
       </div>
       <h5>Page Num: {{pageNum}}</h5>
       <br> <br>
       <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="nextResults()">
-      <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="tile = false">
-      <input type="image" src="next-arrow-md.png"  width="45" height="30" ng-click="tile = true">
-      <!--<img src="next-arrow-md.png" style="width:45px;height:30px;" >-->
+      <input type="image" src="tile.png"  width="45" height="30" ng-click="tile = true">
+      <input type="image" src="list.jpg"  width="45" height="30" ng-click="tile = false">
+
     </th>
     <th class="tg-93t1">
-      <img ng-src="{{img}}" ng-click="showWidget()"  >
+      <img  ng-src="{{img}}" ng-click="showWidget()"  >
       <div ng-bind-html="whtml"></div>
       <div id="widget"></div>
     </th>
@@ -63,9 +61,7 @@
 <script src="https://rawgithub.com/gsklee/ngStorage/master/ngStorage.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/ngStorage/0.3.6/ngStorage.min.js"></script>
 <script src="app.js"></script>
-<script src="directives/directives.js"></script>
 <script src="controllers/MainCtrl.js"></script>
-<script src="controllers/searchContrller.js"></script>
 <script src="filters/paging.js"></script>
 </body>
 </html>
